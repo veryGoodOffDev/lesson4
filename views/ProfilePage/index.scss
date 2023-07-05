@@ -1,0 +1,31 @@
+.profile {
+    padding: 24px;
+    &__page {
+        display: flex;
+        gap: 24px;
+        &-body {
+            width: 100%;
+            padding-left: 24px;
+        }
+        &-header {
+            display: flex;
+            max-width: 100%;
+            flex: 1;
+            justify-content: space-between;
+        }
+        &-title {
+            display: flex;
+        }
+        &-about-me {
+            padding: 10px;
+        }
+    }
+}
+
+.bg-primary {
+    background-color: $bg-color-primary;
+}
+.badge {
+    display: inline-block;
+    align-self: flex-start;
+}

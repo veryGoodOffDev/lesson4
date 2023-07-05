@@ -1,0 +1,30 @@
+.item-menu {
+    width: 42px;
+    height: 42px;
+    border: 1px solid $border-color-default;
+    border-radius: 4px;
+    display: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+  
+    &__dots {
+        color: $font-color-primary;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        height: 15px;
+    }
+  }
+
+  .show {
+    display: block;
+    background-color: $bg-color-secondary-active;
+  }
+
+    
+  .show-menu {
+    display: block;
+  }

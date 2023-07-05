@@ -1,0 +1,10 @@
+.no-avatar {
+    flex-shrink: 0;
+    display: flex;
+    width: 300px;
+    height: 300px;
+    background-color: $bg-color-primary-disabled;
+    font-size: 1000%;
+    justify-content: center;
+    align-items: center;
+}

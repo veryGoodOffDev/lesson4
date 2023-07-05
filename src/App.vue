@@ -1,28 +1,32 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navigation />
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navigation from "./components/Navigation/Navigation.vue";
+// import axios from "axios";
+import {getNewToken} from '@/helper.js';
 
 export default {
-  name: 'App',
+  data() {
+    return {
+      url: "http://45.12.239.156:8081/api",
+    };
+  },
   components: {
-    HelloWorld
-  }
+    Navigation,
+  },
+  mounted() {
+      if (!localStorage.getItem("accessData")) {
+  getNewToken('peregudov.i', "jc63fk");
+}
+console.log((localStorage.getItem("accessData")), 'Текущий Токен')
+}
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import "@/styles/main.scss";
 </style>
