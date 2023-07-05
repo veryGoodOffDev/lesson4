@@ -36,8 +36,7 @@ export default {
       .post(
         `http://45.12.239.156:8081/api/tasks/search`,
         {
-          page: 4, // нумерация страниц с единицы
-          limit: 10,
+          limit: 200,
         },
         {
           headers: {

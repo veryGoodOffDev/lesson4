@@ -2,7 +2,9 @@
   <PreloaderSpinner v-if="!items" />
   <section class="items" v-else-if="items.length">
     <div class="items__head">
+      <router-link to="/create">
       <BaseButton v-bind:text="'Добавить'" :className="'bg-secondary'" />
+      </router-link>
     </div>
     <ul class="items__list">
       <TaskItem

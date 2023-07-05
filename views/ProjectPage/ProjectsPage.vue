@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <ItemsList
       v-bind:items="projects"
       @remove-item="removeProject"
@@ -30,7 +30,7 @@ export default {
       .post(
         `http://45.12.239.156:8081/api/projects/search`,
         {
-          page: 2, 
+          limit: 300, 
         },
         {
           headers: {

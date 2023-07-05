@@ -30,6 +30,7 @@ export default new Vuex.Store({
     currentUser:null,
     tasks: null,
     projects: null,
+    users:[],
   },
   getters: {
     tasks: (state) => state.tasks,
@@ -37,6 +38,7 @@ export default new Vuex.Store({
     auth: (state) => state.auth,
     accessToken: (state) => state.accessToken,
     currentUser: (state) => state.currentUser,
+    users: (state) => state.users,
   },
   mutations: {
     createTask(state, task) {
@@ -58,6 +60,9 @@ export default new Vuex.Store({
     },
     setTasks(state, data) {
       state.tasks = data;
+    },
+    setUsers(state, data) {
+      state.users = data;
     }
   },
   actions: {
@@ -80,6 +85,9 @@ export default new Vuex.Store({
     },
     setTasks({commit}, data) {
       commit("setTasks", data)
+    },
+    setUsers({commit}, data) {
+      commit("setUsers", data)
     }
   },
   modules: {},

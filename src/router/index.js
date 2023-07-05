@@ -30,13 +30,18 @@ export default new Router({
     },
     {
       path: '*',
-      name:'Пользователи',
+      name:'NotFound',
       component: () => import("./../../views/NotFoundPage/NotFoundPage.vue")
     },
     {
       path: '/create',
       name:'Создание',
       component: () => import("./../../views/CreateItem/CreateItem.vue")
+    },
+    {
+      path: '/users',
+      name:'Пользователи',
+      component: () => import("./../../views/UsersPage/UsersPage.vue")
     }
   ]
 })

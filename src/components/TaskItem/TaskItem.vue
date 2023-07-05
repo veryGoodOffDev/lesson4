@@ -80,6 +80,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "./index.scss";
-svg {
-}
 </style>
