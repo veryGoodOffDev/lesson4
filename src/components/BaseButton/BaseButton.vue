@@ -1,40 +1,34 @@
 <template>
-<button :class="'btn ' + className" @click="$emit(event)">{{text}}</button>
+  <button :class="'btn ' + className" @click="$emit(event)">{{ text }}</button>
 </template>
 
 <script>
 export default {
-        props: {
-        text: {
-            type: String,
-            required: true,
-        },
-        event: {
-            type: String,
-            default: '',
-        },
-        className: {
-            type:String,
-        }
+  props: {
+    text: {
+      type: String,
+      required: true,
     },
-    name: 'BaseButton',
+    event: {
+      type: String,
+      default: "",
+    },
+    className: {
+      type: String,
+    },
+  },
+  name: "BaseButton",
 
-    data() {
-        return {
-            
-        };
-    },
+  data() {
+    return {};
+  },
 
-    mounted() {
-        
-    },
+  mounted() {},
 
-    methods: {
-        
-    },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/main.scss';
+@import "@/styles/main.scss";
 </style>

@@ -6,10 +6,10 @@ import tasks from "./modules/tasks";
 Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
-    accessToken:'',
+    accessToken: "",
     auth: false,
-    currentUser:null,
-    users:[],
+    currentUser: null,
+    users: [],
   },
   getters: {
     auth: (state) => state.auth,
@@ -29,12 +29,12 @@ export default new Vuex.Store({
     removeProject(state, id) {
       this.state.projects = state.projects.filter((p) => p.id !== id);
     },
-    setCurrentUser(state, data){
-      state.currentUser = data
+    setCurrentUser(state, data) {
+      state.currentUser = data;
     },
     setUsers(state, data) {
       state.users = data;
-    }
+    },
   },
   actions: {
     createTask({ commit }, item) {
@@ -44,16 +44,16 @@ export default new Vuex.Store({
       commit("removeTask", id);
     },
     removeProject({ commit }, id) {
-      console.log(commit("removeProject"), '2324234234')
+      console.log(commit("removeProject"), "2324234234");
       commit("removeProject", id);
     },
-    setCurrentUser({commit}, data) {
+    setCurrentUser({ commit }, data) {
       // console.log( commit("setCurrentUser"), 'sdfsdfsdf')
-      commit("setCurrentUser", data)
+      commit("setCurrentUser", data);
     },
-    setUsers({commit}, data) {
-      commit("setUsers", data)
-    }
+    setUsers({ commit }, data) {
+      commit("setUsers", data);
+    },
   },
   modules: {
     projects,

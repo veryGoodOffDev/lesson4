@@ -1,70 +1,70 @@
 .create {
-    height: 80vh;
-    margin: 15px;
-    padding: 24px;
-    border-radius: 4px;
-    border: 1px solid $border-color-default;
+  height: 80vh;
+  margin: 15px;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid $border-color-default;
 }
-.create-form{
+.create-form {
+  display: flex;
+  flex-direction: column;
+  label {
+    display: inline-flex;
+    color: $font-color-disabled;
+  }
+  input {
+    max-width: 544px;
+    padding: 12px;
+    margin-bottom: 24px;
+    border: 1px solid $bg-color-primary-disabled;
+    border-radius: 4px;
+    &::placeholder {
+      color: $bg-color-primary-disabled;
+    }
+  }
+  textarea {
+    margin-bottom: 24px;
+    min-height: 120px;
+    resize: none;
+    padding: 12px;
+    border: 1px solid $bg-color-primary-disabled;
+    border-radius: 4px;
+    &::placeholder {
+      color: $bg-color-primary-disabled;
+    }
+  }
+  select {
+    padding: 12px;
+    height: 42px;
+    background-color: transparent;
+    border: 1px solid $bg-color-primary-disabled;
+    border-radius: 4px;
+  }
+  hr {
+    color: $bg-color-primary-disabled;
+    border: 1px solid;
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+  &__header h1 {
+    font-size: 40px;
+    padding: 10px;
+    margin-bottom: 24px;
+  }
+  &__body {
+    max-width: 720px;
+    display: grid;
+    grid-template-columns: 100px 520px;
+    margin-bottom: 24px;
+  }
+  &__footer {
     display: flex;
-    flex-direction: column;
-    label {
-        display: inline-flex;
-        color: $font-color-disabled;
-    }
-    input {
-        max-width: 544px;
-        padding: 12px;
-        margin-bottom: 24px;
-        border: 1px solid $bg-color-primary-disabled;
-        border-radius: 4px;
-        &::placeholder{
-            color: $bg-color-primary-disabled;
-        }
-    }
-    textarea {
-        margin-bottom: 24px;
-        min-height: 120px;
-        resize: none;
-        padding: 12px;
-        border: 1px solid $bg-color-primary-disabled;
-        border-radius: 4px;
-        &::placeholder{
-            color: $bg-color-primary-disabled;
-        }
-    }
-    select {
-        padding: 12px;
-        height: 42px;
-        background-color: transparent;
-        border: 1px solid $bg-color-primary-disabled;
-        border-radius: 4px;
-    }
-    hr{
-        color: $bg-color-primary-disabled;
-        border: 1px solid;
-        border-radius: 10px;
-        margin-bottom: 24px;
-    }
-    &__header h1 {
-        font-size: 40px;
-        padding: 10px;
-        margin-bottom: 24px;
-    }
-    &__body {
-        max-width: 720px;
-        display: grid;
-        grid-template-columns: 100px 520px;
-        margin-bottom: 24px;
-    }
-    &__footer {
-        display: flex;
-        justify-content: end;
-        gap: 24px;
-    }
+    justify-content: end;
+    gap: 24px;
+  }
 }
 
 .error {
-    color: $border-color-error;
-    margin-left: 4px;
+  color: $border-color-error;
+  margin-left: 4px;
 }

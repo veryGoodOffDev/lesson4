@@ -1,15 +1,15 @@
 <template>
   <section class="profile">
-    <PreloaderSpinner v-if="!currentUser"/>
+    <PreloaderSpinner v-if="!currentUser" />
     <div class="profile__page" v-else>
       <!-- <div class="avatar">
         <img src="@/assets/userAvatar.jpg" alt="аватар пользователя" />
       </div> -->
-      <NoAvatar/>
+      <NoAvatar />
       <div class="profile__page-body">
         <div class="profile__page-header">
           <div class="profile__page-title">
-            <h2>{{ currentUser?.name }}</h2>
+            <h2>{{ currentUser.name }}</h2>
             <StatusBadge v-bind:status="currentUser?.status" />
           </div>
           <DropDownMenu v-bind:itemsMenu="itemsMenu" />
@@ -17,8 +17,11 @@
         <div class="profile__page-about-me">
           <span class="about-me">О себе:</span>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique porro, rem accusamus reiciendis ducimus ipsam temporibus delectus nobis accusantium maiores consequuntur, sequi distinctio aspernatur excepturi doloremque hic maxime praesentium dolore.
-            {{ currentUser?.description }}
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique
+            porro, rem accusamus reiciendis ducimus ipsam temporibus delectus
+            nobis accusantium maiores consequuntur, sequi distinctio aspernatur
+            excepturi doloremque hic maxime praesentium dolore.
+            {{ currentUser.description }}
           </p>
         </div>
         <BaseButton
@@ -38,9 +41,9 @@ import router from "@/router";
 import { getToken } from "@/helper.js";
 import axios from "axios";
 import StatusBadge from "@/components/StatusBadge/StatusBadge.vue";
-import BaseButton from '@/components/BaseButton/BaseButton.vue';
-import PreloaderSpinner from '@/components/Preloader/PreloaderSpinner.vue';
-import NoAvatar from '@/components/NoAvatar/NoAvatar.vue';
+import BaseButton from "@/components/BaseButton/BaseButton.vue";
+import PreloaderSpinner from "@/components/Preloader/PreloaderSpinner.vue";
+import NoAvatar from "@/components/NoAvatar/NoAvatar.vue";
 export default {
   name: "ProfilePage",
   components: {
@@ -81,7 +84,7 @@ export default {
         },
       })
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         this.$store.dispatch("setCurrentUser", response.data);
       })
       .catch((response) => console.log("error", response));

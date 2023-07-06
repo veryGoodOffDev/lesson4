@@ -65,7 +65,7 @@ $font-color-disabled: #8e8e8e;
   background-color: $border-color-bronze;
 }
 .bg-error {
-background-color: $border-color-error;
+  background-color: $border-color-error;
 }
 .bg-primary {
   color: $font-color-secondary;
@@ -136,7 +136,6 @@ a .active .arrow.down > svg {
   border-radius: 4px;
 }
 
-
 .delete {
   color: $border-color-error;
 }
@@ -146,14 +145,18 @@ a .active .arrow.down > svg {
 
 .preloader {
   position: absolute;
- top: 50%;
- left: 50%;
-  width:40px;
-  height:40px;
-  border-radius:50%;
-  border:5px solid;
-  border-color:#E4E4ED;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid;
+  border-color: #e4e4ed;
   border-right-color: $bg-color-primary;
-  animation:s2 1s infinite linear;
+  animation: s2 1s infinite linear;
 }
-@keyframes s2 {to{transform: rotate(1turn)}}
+@keyframes s2 {
+  to {
+    transform: rotate(1turn);
+  }
+}

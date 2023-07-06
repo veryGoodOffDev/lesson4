@@ -1,34 +1,27 @@
 <template>
   <li class="items__list-item">
     <div class="item-card">
-        <img
-          src="@/assets/userAvatar.jpg"
-          alt="user-avatar"
-          class="user__img"
-        />
-        <p>
-            {{ item.name }}
-          </p>
-          <StatusBadge v-bind:status="item.status" />
+      <img src="@/assets/userAvatar.jpg" alt="user-avatar" class="user__img" />
+      <p>
+        {{ item.name }}
+      </p>
+      <StatusBadge v-bind:status="item.status" />
     </div>
-    <DropDownMenu
-      v-bind:item="item"
-      v-bind:itemsMenu="itemsMenu"
-    />
+    <DropDownMenu v-bind:item="item" v-bind:itemsMenu="itemsMenu" />
   </li>
 </template>
 
 <script>
-import DropDownMenu from '../DropDownMenu/DropDownMenu.vue';
-import StatusBadge from '../StatusBadge/StatusBadge.vue';
+import DropDownMenu from "../DropDownMenu/DropDownMenu.vue";
+import StatusBadge from "../StatusBadge/StatusBadge.vue";
 
 export default {
-    components: {
-        DropDownMenu,
-        StatusBadge,
-    },
+  components: {
+    DropDownMenu,
+    StatusBadge,
+  },
   name: "UserItem",
-    props: {
+  props: {
     item: {
       type: Object,
       required: true,

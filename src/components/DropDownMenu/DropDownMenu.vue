@@ -5,14 +5,14 @@
         ><icon-dots
       /></IconBase>
     </span>
-    <DropDownList v-bind:itemsMenu="itemsMenu"  v-show="isOpened"/>
+    <DropDownList v-bind:itemsMenu="itemsMenu" v-show="isOpened" />
   </div>
 </template>
 
 <script>
 import IconDots from "../Icon/IconDots.vue";
 import IconBase from "../IconBase.vue";
-import DropDownList from '../DropDown/DropDownList.vue';
+import DropDownList from "../DropDown/DropDownList.vue";
 export default {
   props: ["itemsMenu"],
   components: {

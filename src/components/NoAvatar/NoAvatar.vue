@@ -1,27 +1,21 @@
 <template>
-    <div class="no-avatar">ИП</div>
+  <div class="no-avatar">ИП</div>
 </template>
 
 <script>
 export default {
-    name: 'NoAvatar',
+  name: "NoAvatar",
 
-    data() {
-        return {
-            
-        };
-    },
+  data() {
+    return {};
+  },
 
-    mounted() {
-        
-    },
+  mounted() {},
 
-    methods: {
-        
-    },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-@import './index.scss';
+@import "./index.scss";
 </style>

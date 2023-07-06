@@ -7,7 +7,7 @@
 <script>
 import Navigation from "./components/Navigation/Navigation.vue";
 // import axios from "axios";
-import {getNewToken} from '@/helper.js';
+import { getNewToken } from "@/helper.js";
 
 export default {
   data() {
@@ -19,12 +19,12 @@ export default {
     Navigation,
   },
   mounted() {
-      if (!localStorage.getItem("accessData")) {
-  getNewToken('peregudov.i', "jc63fk");
-}
-console.log((localStorage.getItem("accessData")), 'Текущий Токен')
-}
-}
+    if (!localStorage.getItem("accessData")) {
+      getNewToken("peregudov.i", "jc63fk");
+    }
+    console.log(localStorage.getItem("accessData"), "Текущий Токен");
+  },
+};
 </script>
 
 <style lang="scss">

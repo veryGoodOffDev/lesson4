@@ -1,27 +1,19 @@
 <template>
-    <h1>Item</h1>
+  <h1>Item</h1>
 </template>
 
 <script>
 export default {
-    name: 'ItemPage',
+  name: "ItemPage",
 
-    data() {
-        return {
-            
-        };
-    },
+  data() {
+    return {};
+  },
 
-    mounted() {
-        
-    },
+  mounted() {},
 
-    methods: {
-        
-    },
+  methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

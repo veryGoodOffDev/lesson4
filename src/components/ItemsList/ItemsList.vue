@@ -3,7 +3,7 @@
   <section class="items" v-else-if="items.length">
     <div class="items__head">
       <router-link to="/create">
-      <BaseButton v-bind:text="'Добавить'" :className="'bg-secondary'" />
+        <BaseButton v-bind:text="'Добавить'" :className="'bg-secondary'" />
       </router-link>
     </div>
     <ul class="items__list">
@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './index.scss';
+@import "./index.scss";
 // .items__list {
 //   list-style: none;
 //   padding: 5px 18px;

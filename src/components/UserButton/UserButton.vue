@@ -8,7 +8,7 @@
     </span>
     <ul v-bind:class="['user__dropdown', { show: isOpened }]">
       <router-link to="/profile" tag="li"
-        ><li class="item-menu__list-item" >Профиль</li></router-link
+        ><li class="item-menu__list-item">Профиль</li></router-link
       >
       <li class="item-menu__list-item">Выход</li>
     </ul>

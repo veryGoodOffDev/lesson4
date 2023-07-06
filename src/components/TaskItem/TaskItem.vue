@@ -1,11 +1,13 @@
 <template>
-<li class="items__list-item">
+  <li class="items__list-item">
     <div class="item-card">
       <div class="item-card__head">
-        <router-link :to="'/task/' + item._id"><h3 class="item-card__title">
-        {{ item.name }}</h3>
+        <router-link :to="'/task/' + item._id"
+          ><h3 class="item-card__title">
+            {{ item.name }}
+          </h3>
         </router-link>
-        
+
         <img
           v-if="item.projectId"
           src="@/assets/userAvatar.jpg"
@@ -15,9 +17,11 @@
       </div>
       <div class="item-card__body">
         <p class="item-card__created">
-          <span class="item-card__number">{{ item?.code || item?.number }}</span>
+          <span class="item-card__number">{{
+            item?.code || item?.number
+          }}</span>
           {{ item.dateCreated }}
-          <StatusBadge v-if="item.projectId" v-bind:status="item.status"/>
+          <StatusBadge v-if="item.projectId" v-bind:status="item.status" />
         </p>
         <p class="item-card__edited">{{ item.dateEdited }}</p>
       </div>
@@ -28,13 +32,12 @@
       v-bind:item="item"
       v-bind:itemsMenu="itemsMenu"
     />
-
   </li>
 </template>
 
 <script>
 import DropDownMenu from "../DropDownMenu/DropDownMenu.vue";
-import StatusBadge from '../StatusBadge/StatusBadge.vue';
+import StatusBadge from "../StatusBadge/StatusBadge.vue";
 export default {
   components: {
     DropDownMenu,
@@ -50,18 +53,18 @@ export default {
 
   data() {
     return {
-      itemsMenu:[
+      itemsMenu: [
         {
-        name: 'Редактировать',
-        className: 'edit',
-        event:'',
+          name: "Редактировать",
+          className: "edit",
+          event: "",
         },
         {
-          name: 'Удалить',
-          className: 'delete',
-          event:'',
-        }
-      ]
+          name: "Удалить",
+          className: "delete",
+          event: "",
+        },
+      ],
     };
   },
 

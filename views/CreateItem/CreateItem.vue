@@ -41,7 +41,7 @@
           v-bind:event="'go-back'"
           type="button"
         />
-        <BaseButton v-bind:text="'Создать задачу'" :className="'bg-primary'"/>
+        <BaseButton v-bind:text="'Создать задачу'" :className="'bg-primary'" />
       </div>
     </form>
   </div>

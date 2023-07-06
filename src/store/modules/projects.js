@@ -32,10 +32,10 @@ const actions = {
       console.log(data);
       context.commit("SET_PROJECTS", data.projects);
     } catch (error) {
-        console.log({
-            status: error.response.status,
-            message: error.message,
-        })
+      console.log({
+        status: error.response.status,
+        message: error.message,
+      });
     }
   },
 };
