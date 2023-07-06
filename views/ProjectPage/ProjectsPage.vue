@@ -11,8 +11,6 @@
 
 <script>
 import ItemsList from "../../src/components/ItemsList/ItemsList.vue";
-import { getToken } from "@/helper.js";
-import axios from "axios";
 export default {
   name: "ProjectsPage",
   components: {
@@ -20,33 +18,15 @@ export default {
   },
 
   data: function () {
-    return {
-      
-    };
+    return {};
   },
 
   mounted() {
-    axios
-      .post(
-        `http://45.12.239.156:8081/api/projects/search`,
-        {
-          limit: 300, 
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
-        }
-      )
-      .then(({ data }) => {
-        console.log(data);
-        this.$store.dispatch('setProjects', data.projects)
-      })
-      .catch((error) => console.log("error", error));
+    this.$store.dispatch("GET_PROJECTS");
   },
   computed: {
     projects() {
-      return this.$store.getters.projects;
+      return this.$store.getters.PROJECTS;
     },
   },
 

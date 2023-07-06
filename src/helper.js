@@ -11,7 +11,7 @@ import axios from "axios";
 //   localStorage.setItem("accessData", token);
 // }
 
-export const getToken = () => localStorage.getItem("accessData")
+export const getToken =  () => localStorage.getItem("accessData")
 const savedToken  = getToken()
 console.log(savedToken)
 

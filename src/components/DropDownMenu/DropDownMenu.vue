@@ -6,20 +6,6 @@
       /></IconBase>
     </span>
     <DropDownList v-bind:itemsMenu="itemsMenu"  v-show="isOpened"/>
-    <!-- <ul v-bind:class="['item-menu__list', { 'show-menu': isOpened } ]">
-      <li
-        class="item-menu__list-item edit"
-        @click="$emit('edit-item', item.id)"
-      >
-        Редактировать
-      </li>
-      <li
-        class="item-menu__list-item delete"
-        @click="$emit('remove-item', item.id)"
-      >
-        Удалить
-      </li>
-    </ul> -->
   </div>
 </template>
 

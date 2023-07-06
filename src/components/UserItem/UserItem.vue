@@ -1,17 +1,15 @@
 <template>
   <li class="items__list-item">
     <div class="item-card">
-      <div class="item-card__body">
         <img
           src="@/assets/userAvatar.jpg"
           alt="user-avatar"
           class="user__img"
         />
-        <h3 class="item-card__title">
+        <p>
             {{ item.name }}
-          </h3>
+          </p>
           <StatusBadge v-bind:status="item.status" />
-      </div>
     </div>
     <DropDownMenu
       v-bind:item="item"
@@ -60,4 +58,14 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/components/TaskItem/index.scss";
+.item-card {
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  height: 42px;
+}
+p {
+  color: #1c1c1c;
+  margin-left: 8px;
+}
 </style>

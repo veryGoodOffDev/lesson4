@@ -1,67 +1,44 @@
 <template>
-<div class="wrapper">
-   <ItemsList
-    v-bind:items="tasks"
-    @remove-item="removeTask"
-    @edit-item="editTask"
-    v-bind:inner="'Не создано ни одной задачи'"
-   /> 
-   </div>
+  <div class="wrapper">
+    <ItemsList
+      v-bind:items="tasks"
+      @remove-item="removeTask"
+      @edit-item="editTask"
+      v-bind:inner="'Не создано ни одной задачи'"
+    />
+  </div>
 </template>
 
-
 <script>
-import axios from 'axios';
-import ItemsList from '../../src/components/ItemsList/ItemsList.vue';
-import { getToken } from "@/helper.js";
+import ItemsList from "../../src/components/ItemsList/ItemsList.vue";
 export default {
-    name: 'TasksPage',
-    components: {
-        ItemsList,
-    },
+  name: "TasksPage",
+  components: {
+    ItemsList,
+  },
 
-    data: function() {
-        return {
-            
-        };
+  data: function () {
+    return {};
+  },
+  computed: {
+    tasks() {
+      return this.$store.getters.TASKS;
     },
-    computed: {
-      tasks() {
-        return this.$store.getters.tasks
-      }
-    },
+  },
 
-    mounted() {
-            axios
-      .post(
-        `http://45.12.239.156:8081/api/tasks/search`,
-        {
-          limit: 200,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${getToken()}`,
-          },
-        }
-      )
-      .then(({ data }) => {
-        console.log(data);
-        this.$store.dispatch('setTasks', data.tasks)
-      })
-      .catch((error) => console.log("error", error));
-    },
+  mounted() {
+    this.$store.dispatch("GET_TASKS");
+  },
 
-    methods: {
-        removeTask(id) {
-          this.$store.dispatch('removeTask', id)
-        },
-        editTask(id) {
-          console.log(id)
-        },
+  methods: {
+    removeTask(id) {
+      this.$store.dispatch("removeTask", id);
     },
+    editTask(id) {
+      console.log(id);
+    },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
