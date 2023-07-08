@@ -20,10 +20,10 @@
           <span class="item-card__number">{{
             item?.code || item?.number
           }}</span>
-          {{ item.dateCreated }}
+        {{findNameUserCreated}} создал(а)  {{ item.dateCreated }} 
           <StatusBadge v-if="item.projectId" v-bind:status="item.status" />
         </p>
-        <p class="item-card__edited">{{ item.dateEdited }}</p>
+        <p class="item-card__edited">{{ item.dateEdited? findNameUserEdited + " изменил(а) "+ item.dateEdited : null}}</p>
       </div>
     </div>
     <DropDownMenu
@@ -48,6 +48,9 @@ export default {
       type: Object,
       required: true,
     },
+    users: {
+      type:Array,
+    }
   },
   name: "TaskItem",
 
@@ -67,8 +70,22 @@ export default {
       ],
     };
   },
+  beforeMount() {
+},
+  mounted() {
+    console.log(this.users, 'this users', this.item._id, 'item_id')
 
-  mounted() {},
+  },
+  computed: {
+    findNameUserCreated() {
+    const indexUser = this.users.findIndex(u => u._id === this.item.author)
+    return this.users[indexUser].name.split(/\s+/).map((w,i) => i ? w.substring(0,1).toUpperCase() + '.' : w).join(' ')
+    },
+    findNameUserEdited() {
+    const indexUser = this.users.findIndex(u => u._id === this.item.authorEdited)
+    return this.users[indexUser].name.split(/\s+/).map((w,i) => i ? w.substring(0,1).toUpperCase() + '.' : w).join(' ')
+    }
+  },
 
   methods: {
     removeItem(id) {

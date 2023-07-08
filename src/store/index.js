@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import projects from "./modules/projects";
 import tasks from "./modules/tasks";
+import users from "./modules/users";
 
 Vue.use(Vuex);
 export default new Vuex.Store({
@@ -9,13 +10,11 @@ export default new Vuex.Store({
     accessToken: "",
     auth: false,
     currentUser: null,
-    users: [],
   },
   getters: {
     auth: (state) => state.auth,
     accessToken: (state) => state.accessToken,
     currentUser: (state) => state.currentUser,
-    users: (state) => state.users,
   },
   mutations: {
     createTask(state, task) {
@@ -31,9 +30,6 @@ export default new Vuex.Store({
     },
     setCurrentUser(state, data) {
       state.currentUser = data;
-    },
-    setUsers(state, data) {
-      state.users = data;
     },
   },
   actions: {
@@ -51,12 +47,10 @@ export default new Vuex.Store({
       // console.log( commit("setCurrentUser"), 'sdfsdfsdf')
       commit("setCurrentUser", data);
     },
-    setUsers({ commit }, data) {
-      commit("setUsers", data);
-    },
   },
   modules: {
     projects,
     tasks,
+    users,
   },
 });

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken } from "@/helper";
+import { getToken, getNewToken } from "@/helper";
 
 const state = {
   projects: null,
@@ -21,7 +21,7 @@ const actions = {
       const { data } = await axios.post(
         `http://45.12.239.156:8081/api/projects/search`,
         {
-          limit: 200,
+          limit: 300,
         },
         {
           headers: {
@@ -32,6 +32,9 @@ const actions = {
       console.log(data);
       context.commit("SET_PROJECTS", data.projects);
     } catch (error) {
+      if(error.response.status === 401) {
+        getNewToken("peregudov.i", "jc63fk");
+      }
       console.log({
         status: error.response.status,
         message: error.message,

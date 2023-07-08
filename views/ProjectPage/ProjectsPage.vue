@@ -2,6 +2,7 @@
   <div class="wrapper">
     <ItemsList
       v-bind:items="projects"
+      v-bind:users="users"
       @remove-item="removeProject"
       @edit-item="editProject"
       v-bind:inner="'Не создан ни один проект'"
@@ -23,10 +24,14 @@ export default {
 
   mounted() {
     this.$store.dispatch("GET_PROJECTS");
+    this.$store.dispatch("GET_USERS");
   },
   computed: {
     projects() {
       return this.$store.getters.PROJECTS;
+    },
+    users() {
+      return this.$store.getters.USERS
     },
   },
 

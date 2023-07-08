@@ -13,7 +13,9 @@
         v-bind:item="item"
         v-on:remove-item="removeItem"
         v-on:edit-item="editItem"
+        v-bind:users="users"
       />
+      <p>{{findUserName()}}</p>
     </ul>
   </section>
   <EmptyPage v-else v-bind:inner="inner" />
@@ -24,7 +26,7 @@ import EmptyPage from "../EmptyPage/EmptyPage.vue";
 import PreloaderSpinner from "../Preloader/PreloaderSpinner.vue";
 import TaskItem from "../TaskItem/TaskItem.vue";
 export default {
-  props: ["items", "inner"],
+  props: ["items", "inner", "users"],
   name: "TaskList",
   components: {
     TaskItem,
@@ -47,6 +49,9 @@ export default {
     editItem(id) {
       this.$emit("edit-item", id);
     },
+    findUserName() {
+      console.log(this.users)
+    }
   },
 };
 </script>

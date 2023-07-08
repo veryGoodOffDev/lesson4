@@ -5,6 +5,7 @@
       @remove-item="removeTask"
       @edit-item="editTask"
       v-bind:inner="'Не создано ни одной задачи'"
+      v-bind:users="users"
     />
   </div>
 </template>
@@ -24,10 +25,14 @@ export default {
     tasks() {
       return this.$store.getters.TASKS;
     },
+    users() {
+      return this.$store.getters.USERS;
+    }
   },
 
   mounted() {
     this.$store.dispatch("GET_TASKS");
+    this.$store.dispatch("GET_USERS");
   },
 
   methods: {
