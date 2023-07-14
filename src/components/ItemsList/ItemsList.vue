@@ -13,7 +13,7 @@
     <ul class="items__list">
       <TaskItem
         v-for="item of items"
-        :key="item.id"
+        :key="item._id"
         v-bind:item="item"
         @get-tasks-by-id="getTasksByIdProject"
       />
@@ -47,7 +47,9 @@ export default {
     return {};
   },
 
-  mounted() {},
+  mounted() {
+    console.log(this.items, 'this items')
+  },
   computed: {
     isShowModal() {
       return this.$store.getters.isShowModal;
@@ -56,8 +58,7 @@ export default {
 
   methods: {
      goToPage(page) {
-      this.$store.dispatch("GET_PROJECTS__PAGE", page);
-      console.log(page);
+        this.$emit("go-to-page", page);
     },
     showModal(bool) {
       this.$store.dispatch("showModal", bool);

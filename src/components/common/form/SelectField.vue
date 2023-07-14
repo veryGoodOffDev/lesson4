@@ -4,7 +4,7 @@
     v-bind:value="value"
     v-on:input="$emit('input', $event.target.value)"
   >
-  <option value="">{{currentItem}}</option>
+  <option value="" v-if="options">{{currentItem}}</option>
     <option v-for="option in options" :key="option._id">
       {{ option.name }}
     </option>

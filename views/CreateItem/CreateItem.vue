@@ -64,6 +64,7 @@ export default {
 
   mounted() {
     this.$store.dispatch("GET_CURRENT_USER")
+    this.$store.dispatch("GET_USERS")
   },
   computed: {
     projects() {
@@ -74,8 +75,8 @@ export default {
     },
     currentProject() {
       const indexProject = this.projects.findIndex((p) => p._id === this.id);
-      const currentProject = this.projects[indexProject].name;
-      return currentProject;
+       return this.projects[indexProject].name;
+       
     },
     users() {
       return this.$store.getters.USERS

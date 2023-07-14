@@ -44,6 +44,7 @@ const actions = {
         }
       );
       console.log(data.total, 'всего страниц с задачами');
+      console.log(data)
       commit("SET_TASKS", data.tasks);
       commit("SET_TASKS_DATA", data);
     } catch (error) {

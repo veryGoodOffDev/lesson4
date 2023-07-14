@@ -6,6 +6,7 @@
       :itemsData="projectsData"
       :inner="'Не создан ни один проект'"
       @get-tasks-by-id="getTasksByIdProject"
+      @go-to-page="goToPage"
     />
   </div>
 </template>
@@ -23,19 +24,23 @@ export default {
   data: function () {
     return {};
   },
+  beforeMount() {
+    this.$store.dispatch("GET_USERS");
+  },
 
   mounted() {
     this.$store.dispatch("GET_PROJECTS");
   },
+  watch: {},
   computed: {
-    projects() {
-      return this.$store.getters.PROJECTS;
-    },
     projectsData() {
       return this.$store.getters.PROJECTS_DATA;
     },
     isShowModal() {
       return this.$store.getters.isShowModal;
+    },
+    projects() {
+      return this.$store.getters.PROJECTS;
     },
   },
 
@@ -44,6 +49,9 @@ export default {
       this.$store.dispatch("GET_TASKS_BY_PROJECT_ID", id);
       console.log(id);
     },
+     goToPage(page) {
+      this.$store.dispatch('GET_PROJECTS__PAGE', page)
+    }
   },
 };
 </script>

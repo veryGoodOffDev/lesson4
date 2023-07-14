@@ -24,14 +24,14 @@
           <span class="item-card__number">{{
             item?.code || item?.number
           }}</span>
-          {{ findNameUserCreated }} создал(а) {{ item.dateCreated }}
+          {{ nameUserCreate }} создал(а) {{ item.dateCreated }}
           <StatusBadge v-if="item.projectId" v-bind:status="item.status" />
         </p>
-        <p class="item-card__edited">
+        <p class="item-card__edited" v-if="item.dataEdited">
           {{
-            item.dateEdited
+            users
               ? findNameUserEdited + " изменил(а) " + item.dateEdited
-              : null
+              : "Ожидание"
           }}
         </p>
       </div>
@@ -74,18 +74,26 @@ export default {
           event: "remove-item",
         },
       ],
-      nameUserCreated : null,
-      nameUserEdited : null,
+      nameUserCreated: null,
+      nameUserEdited: null,
     };
   },
   beforeMount() {
-    
   },
-  mounted() {
-  },
+  mounted() {},
   computed: {
     users() {
       return this.$store.getters.USERS;
+    },
+
+    findNameUserEdited() {
+      const indexUser = this.users?.findIndex(
+        (u) => u._id === this.item.authorEdited
+      );
+      return this.users[indexUser].name
+        .split(/\s+/)
+        .map((w, i) => (i ? w.substring(0, 1).toUpperCase() + "." : w))
+        .join(" ");
     },
     findNameUserCreated() {
       const indexUser = this.users?.findIndex(
@@ -96,14 +104,12 @@ export default {
         .map((w, i) => (i ? w.substring(0, 1).toUpperCase() + "." : w))
         .join(" ");
     },
-    findNameUserEdited() {
-      const indexUser = this.users?.findIndex(
-        (u) => u._id === this.item.authorEdited
-      );
-      return this.users[indexUser].name
-        .split(/\s+/)
-        .map((w, i) => (i ? w.substring(0, 1).toUpperCase() + "." : w))
-        .join(" ");
+    nameUserCreate() {
+      if (this.users) {
+        return this.findNameUserCreated;
+      } else {
+        return "Wait";
+      }
     },
   },
 

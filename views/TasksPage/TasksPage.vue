@@ -53,8 +53,8 @@ export default {
       console.log(id);
     },
     goToPage(page) {
-      this.$store.dispatch("GET_TASKS__PAGE", page);
-    },
+      this.$store.dispatch('GET_TASKS__PAGE', page)
+    }
   },
 };
 </script>
