@@ -21,16 +21,11 @@
           v-model="description"
           placeholder="Введите текст..."
         />
-        <label>Проект<span class="error">*</span></label>
-        <select v-model="select" id="select">
-          <option
-            v-for="project in projects"
-            :key="project.number"
-            selected="true"
-          >
-            {{ project.number }}
-          </option>
-        </select>
+        <label>Проект из компонента<span class="error">*</span></label>
+        <SelectField :options="projects"  v-model="selected" :selectedItem="currentProject"/>
+        <label>Исполнитель<span class="error">*</span></label>
+        <SelectField :options="users"  v-model="selectedExecutor" :selectedItem="currentUser?.name" />
+
       </div>
       <hr />
       <div class="create-form__footer">
@@ -48,10 +43,12 @@
 </template>
 
 <script>
+import SelectField from '@/components/common/form/SelectField.vue';
 import BaseButton from "../../src/components/BaseButton/BaseButton.vue";
 export default {
   components: {
     BaseButton,
+    SelectField,
   },
   name: "CreateItem",
 
@@ -60,36 +57,46 @@ export default {
       title: "",
       description: "",
       date: null,
-      select: null,
+      selected: null,
+      selectedExecutor:null,
     };
   },
 
-  mounted() {},
+  mounted() {
+    this.$store.dispatch("GET_CURRENT_USER")
+  },
   computed: {
     projects() {
-      return this.$store.getters.projects;
+      return this.$store.getters.PROJECTS;
     },
+    id() {
+      return this.$route.params.id;
+    },
+    currentProject() {
+      const indexProject = this.projects.findIndex((p) => p._id === this.id);
+      const currentProject = this.projects[indexProject].name;
+      return currentProject;
+    },
+    users() {
+      return this.$store.getters.USERS
+    },
+    currentUser() {
+      return this.$store.getters.CURRENT_USER
+    }
   },
 
   methods: {
     submitHandler() {
       const item = {
-        //   id: 7,
-        //   title:
-        //     "Название очень длинное название для проверки верстки очень длинное название для проверки верстки очень длинное название для проверки верстки очень длинное название для проверки верстки очень длинное название для проверки верстки очень длинное название для проверки верстки",
-        //   status: "Черновик",
-        //   created: "Иванов И.И. создал 1 час назад",
-        //   edited: "Баранов В.В. изменил 1 минуту назад",
-        //   number: "#1",
-        //   isProject: false,
         title: this.title,
         description: this.description,
         id: Date.now(),
         status: "Черновик",
-        project: this.select,
+        project: this.selected?this.selected:this.currentProject,
         code: "#" + Date.now(),
         created: "Баранов И. И. создал 1 час назад",
         edited: "Перегудов И. Г. изменил 1 минуну назад",
+        executor: this.selectedExecutor?this.selectedExecutor:this.currentUser.name
       };
       console.log(item);
       this.$store.dispatch("createTask", item);

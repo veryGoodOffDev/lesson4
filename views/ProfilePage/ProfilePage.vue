@@ -25,10 +25,10 @@
           </p>
         </div>
         <BaseButton
-          v-bind:text="'Назад'"
+          :text="'Назад'"
           :className="'bg-secondary'"
           @go-back="goBack"
-          v-bind:event="'go-back'"
+          :event="'go-back'"
         />
       </div>
     </div>
@@ -38,8 +38,6 @@
 <script>
 import DropDownMenu from "@/components/DropDownMenu/DropDownMenu.vue";
 import router from "@/router";
-import { getToken } from "@/helper.js";
-import axios from "axios";
 import StatusBadge from "@/components/StatusBadge/StatusBadge.vue";
 import BaseButton from "@/components/BaseButton/BaseButton.vue";
 import PreloaderSpinner from "@/components/Preloader/PreloaderSpinner.vue";
@@ -77,21 +75,11 @@ export default {
   mounted() {},
   beforeMount() {
     // getCurrentUser(this.currentUser);
-    axios
-      .get(`http://45.12.239.156:8081/api/users/current`, {
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      })
-      .then((response) => {
-        console.log(response.data);
-        this.$store.dispatch("setCurrentUser", response.data);
-      })
-      .catch((response) => console.log("error", response));
+  this.$store.dispatch("GET_CURRENT_USER")
   },
   computed: {
     currentUser() {
-      return this.$store.getters.currentUser;
+      return this.$store.getters.CURRENT_USER;
     },
   },
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="no-avatar">ИП</div>
+  <div class="no-avatar" >ИП</div>
 </template>
 
 <script>

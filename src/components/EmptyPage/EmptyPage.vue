@@ -2,11 +2,10 @@
   <div class="no-items__page">
     <div class="no-items__page-inner">
       <p class="no-items__title">{{ inner }}</p>
-      <router-link to="/create">
+      <router-link :to="`/project/${id}/create`">
         <BaseButton
           v-bind:text="'Добавить'"
-          :class="'bg-primary'"
-          @click:create-item="$emit(createItem)"
+          :class="'bg-primary'" 
         />
       </router-link>
     </div>
@@ -29,17 +28,22 @@ export default {
     BaseButton,
   },
   name: "EmptyPageVue",
+  computed:{
+    id(){
+      return this.$route.params.id
+    }
+  },
 
   data() {
-    return {};
+    return {
+      
+    };
   },
 
   mounted() {},
 
   methods: {
-    createItem(param) {
-      this.$emit("create-item", param);
-    },
+
   },
 };
 </script>

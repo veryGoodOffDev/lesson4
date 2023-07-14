@@ -1,21 +1,23 @@
 <template>
   <div class="wrapper">
+    <CreateProjectModal v-show="isShowModal" />
     <ItemsList
-      v-bind:items="projects"
-      v-bind:users="users"
-      @remove-item="removeProject"
-      @edit-item="editProject"
-      v-bind:inner="'Не создан ни один проект'"
+      :items="projects"
+      :itemsData="projectsData"
+      :inner="'Не создан ни один проект'"
+      @get-tasks-by-id="getTasksByIdProject"
     />
   </div>
 </template>
 
 <script>
+import CreateProjectModal from "./../CreateProjectModal/CreateProjectModal.vue";
 import ItemsList from "../../src/components/ItemsList/ItemsList.vue";
 export default {
   name: "ProjectsPage",
   components: {
     ItemsList,
+    CreateProjectModal,
   },
 
   data: function () {
@@ -24,22 +26,22 @@ export default {
 
   mounted() {
     this.$store.dispatch("GET_PROJECTS");
-    this.$store.dispatch("GET_USERS");
   },
   computed: {
     projects() {
       return this.$store.getters.PROJECTS;
     },
-    users() {
-      return this.$store.getters.USERS
+    projectsData() {
+      return this.$store.getters.PROJECTS_DATA;
+    },
+    isShowModal() {
+      return this.$store.getters.isShowModal;
     },
   },
 
   methods: {
-    removeProject(id) {
-      this.$store.dispatch("removeProject", id);
-    },
-    editProject(id) {
+    getTasksByIdProject(id) {
+      this.$store.dispatch("GET_TASKS_BY_PROJECT_ID", id);
       console.log(id);
     },
   },

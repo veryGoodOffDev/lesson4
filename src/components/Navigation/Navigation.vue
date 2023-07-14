@@ -4,12 +4,11 @@
       <nav class="menu">
         <ul class="menu__list">
           <router-link
-            custom
             v-slot="{ href, navigate, isActive }"
             v-for="link in links"
             :key="link.path"
-            v-bind:to="link.path"
-            v-bind:exact="link.exact"
+            :to="link.path"
+            :exact="link.exact"
             active-class="acive"
           >
             <li class="menu__list-item">

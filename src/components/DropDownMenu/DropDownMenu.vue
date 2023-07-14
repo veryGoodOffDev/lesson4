@@ -5,7 +5,14 @@
         ><icon-dots
       /></IconBase>
     </span>
-    <DropDownList v-bind:itemsMenu="itemsMenu" v-show="isOpened" />
+    <DropDownList
+      @remove-item="removeItem"
+      @edit-item="editItem"
+      v-bind:itemsMenu="itemsMenu"
+      :item="item"
+      v-show="isOpened"
+      :param="item._id"
+    />
   </div>
 </template>
 
@@ -14,7 +21,7 @@ import IconDots from "../Icon/IconDots.vue";
 import IconBase from "../IconBase.vue";
 import DropDownList from "../DropDown/DropDownList.vue";
 export default {
-  props: ["itemsMenu"],
+  props: ["itemsMenu", "item"],
   components: {
     IconBase,
     IconDots,
@@ -38,6 +45,12 @@ export default {
         }
       });
       this.isOpened = !this.isOpened;
+    },
+    removeItem(id) {
+      this.$emit("remove-item", id);
+    },
+    editItem(id) {
+      this.$emit("edit-item", id);
     },
   },
 };

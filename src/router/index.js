@@ -17,11 +17,18 @@ export default new Router({
       path: "/tasks",
       name: "Задачи",
       component: () => import("./../../views/TasksPage/TasksPage.vue"),
+      props:true,
     },
     {
       path: "/task/:id",
       name: "Задача",
       component: () => import("./../../views/Task/TaskPage.vue"),
+    },
+    {
+      path: "/project/:id",
+      name: "Проект",
+      component: () => import("./../../views/TasksPage/TasksPageFiltered.vue"),
+      props:true,
     },
     {
       path: "/profile",
@@ -34,9 +41,10 @@ export default new Router({
       component: () => import("./../../views/NotFoundPage/NotFoundPage.vue"),
     },
     {
-      path: "/create",
+      path: "/project/:id/create",
       name: "Создание",
       component: () => import("./../../views/CreateItem/CreateItem.vue"),
+      props:true,
     },
     {
       path: "/users",

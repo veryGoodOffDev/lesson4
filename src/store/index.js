@@ -9,12 +9,12 @@ export default new Vuex.Store({
   state: {
     accessToken: "",
     auth: false,
-    currentUser: null,
+    isShowModal: false,
   },
   getters: {
     auth: (state) => state.auth,
     accessToken: (state) => state.accessToken,
-    currentUser: (state) => state.currentUser,
+    isShowModal: (state) => state.isShowModal,
   },
   mutations: {
     createTask(state, task) {
@@ -28,8 +28,8 @@ export default new Vuex.Store({
     removeProject(state, id) {
       this.state.projects = state.projects.filter((p) => p.id !== id);
     },
-    setCurrentUser(state, data) {
-      state.currentUser = data;
+    showModal(state, bool) {
+      state.isShowModal = bool;
     },
   },
   actions: {
@@ -46,6 +46,9 @@ export default new Vuex.Store({
     setCurrentUser({ commit }, data) {
       // console.log( commit("setCurrentUser"), 'sdfsdfsdf')
       commit("setCurrentUser", data);
+    },
+    showModal({ commit }, bool) {
+      commit("showModal", bool);
     },
   },
   modules: {

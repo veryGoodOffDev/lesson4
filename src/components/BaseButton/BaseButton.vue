@@ -1,21 +1,24 @@
 <template>
-  <button :class="'btn ' + className" @click="$emit(event)">{{ text }}</button>
+  <button :class="'btn ' + className" @click="$emit(event, param)">{{ text  }}</button>
 </template>
 
 <script>
 export default {
   props: {
     text: {
-      type: String,
+      type: [String, Object],
       required: true,
     },
     event: {
       type: String,
-      default: "",
+      default: '',
     },
     className: {
       type: String,
     },
+    param:{
+      type:[String, Boolean, Number, Object,]
+    }
   },
   name: "BaseButton",
 

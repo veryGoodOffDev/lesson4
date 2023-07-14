@@ -2,37 +2,45 @@
   <PreloaderSpinner v-if="!items" />
   <section class="items" v-else-if="items.length">
     <div class="items__head">
-      <router-link to="/create">
-        <BaseButton v-bind:text="'Добавить'" :className="'bg-secondary'" />
-      </router-link>
+      <BaseButton
+        v-bind:text="'Добавить'"
+        :className="'bg-secondary'"
+        @show-modal="showModal"
+        :event="'show-modal'"
+        :param="!isShowModal"
+      />
     </div>
     <ul class="items__list">
       <TaskItem
         v-for="item of items"
         :key="item.id"
         v-bind:item="item"
-        v-on:remove-item="removeItem"
-        v-on:edit-item="editItem"
-        v-bind:users="users"
+        @get-tasks-by-id="getTasksByIdProject"
       />
-      <p>{{findUserName()}}</p>
     </ul>
+    <Pagination
+      v-if="itemsData.total > 1"
+      v-bind:itemsData="itemsData"
+      @go-to-page="goToPage"
+    />
   </section>
-  <EmptyPage v-else v-bind:inner="inner" />
+  <EmptyPage v-else v-bind:inner="inner"  :id="id"/>
 </template>
 <script>
 import BaseButton from "../BaseButton/BaseButton.vue";
 import EmptyPage from "../EmptyPage/EmptyPage.vue";
+import Pagination from "../Pagination/Pagination.vue";
 import PreloaderSpinner from "../Preloader/PreloaderSpinner.vue";
 import TaskItem from "../TaskItem/TaskItem.vue";
 export default {
-  props: ["items", "inner", "users"],
+  props: ["items", "itemsData", "inner", "id"],
   name: "TaskList",
   components: {
     TaskItem,
     EmptyPage,
     PreloaderSpinner,
     BaseButton,
+    Pagination,
   },
 
   data() {
@@ -40,26 +48,27 @@ export default {
   },
 
   mounted() {},
-  computed: {},
+  computed: {
+    isShowModal() {
+      return this.$store.getters.isShowModal;
+    },
+  },
 
   methods: {
-    removeItem(id) {
-      this.$emit("remove-item", id);
+     goToPage(page) {
+      this.$store.dispatch("GET_PROJECTS__PAGE", page);
+      console.log(page);
     },
-    editItem(id) {
-      this.$emit("edit-item", id);
+    showModal(bool) {
+      this.$store.dispatch("showModal", bool);
     },
-    findUserName() {
-      console.log(this.users)
-    }
+    getTasksByIdProject(id) {
+      this.$emit("get-tasks-by-id", id);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "./index.scss";
-// .items__list {
-//   list-style: none;
-//   padding: 5px 18px;
-// }
 </style>

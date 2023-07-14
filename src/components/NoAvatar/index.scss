@@ -1,10 +1,11 @@
 .no-avatar {
   flex-shrink: 0;
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   background-color: $bg-color-primary-disabled;
-  font-size: 1000%;
+  font-size: 80%;
   justify-content: center;
   align-items: center;
 }
